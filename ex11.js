@@ -28,25 +28,37 @@ Implement the functions one by one. The example inputs and outputs below will he
 const PI = 3.14159;
 
 const sphereVolume = function (radius) {
-  // Code here!
+  return (4 / 3) * PI * Math.pow(radius, 3);
+
 };
 
 console.log(4186 < sphereVolume(10) && sphereVolume(10) < 4189); //true
 
 const coneVolume = function (radius, height) {
-  // And here!
+  return (1 / 3) * PI * Math.pow(radius, 2) * height;
+  
 };
 
 console.log(45 < coneVolume(3, 5) && coneVolume(3, 5) < 49); //true
 
 const prismVolume = function (height, width, depth) {
-  // Probably here too!
+  return width * depth * height;
 };
 
 console.log(prismVolume(3, 4, 5) === 60); //true
 
 const totalVolume = function (solids) {
-  // Code here? Yup!
+  let total = 0;
+  for (const shape of solids) {
+    if (shape.type === 'sphere') {
+      total += sphereVolume(shape.radius);
+    } else if (shape.type === 'cone') {
+      total += coneVolume(shape.radius, shape.height);
+    } else if (shape.type === 'prism') {
+      total += prismVolume(shape.height, shape.width, shape.depth);
+    }
+  }
+  return total;
 };
 
 const largeSphere = {

@@ -7,7 +7,15 @@ Create a function named conditionalSum that will be given an array of numbers an
 */
 
 const conditionalSum = function (values, condition) {
-  // Your code here
+  const isEven = condition === "even";
+  
+  const filteredValues = values.filter(value => 
+    isEven ? value % 2 === 0 : value % 2 !== 0
+  );
+  
+  return filteredValues.reduce((accumulator, currentValue) => 
+    accumulator + currentValue, 0
+  );
 };
 
 console.log(conditionalSum([1, 2, 3, 4, 5], "even")); // 6

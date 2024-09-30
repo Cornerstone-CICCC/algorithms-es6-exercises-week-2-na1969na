@@ -9,7 +9,17 @@ Create a function named camelCase that will convert a string to camel case, and 
 */
 
 const camelCase = function (input) {
-  // Your code here
+  const str = input.split(" ");
+  let capitalizedWords = [];
+
+  capitalizedWords.push(str[0].toLowerCase());
+
+  for (let i = 1; i < str.length; i++) {
+    const firstLetter = str[i].charAt(0).toUpperCase(); 
+    const remainingLetters = str[i].slice(1).toLowerCase(); 
+    capitalizedWords.push(firstLetter + remainingLetters);
+  }
+  return capitalizedWords.join("");
 };
 
 console.log(camelCase("this is a string")); // thisIsAString

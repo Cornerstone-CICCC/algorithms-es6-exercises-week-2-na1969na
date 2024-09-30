@@ -9,7 +9,12 @@ Create a function named repeatNumbers that will return a string with each of the
 */
 
 const repeatNumbers = function (data) {
-  // Put your solution here
+  const result = data.map(set => {
+    const number = set[0];
+    const repeatCount = set[1];
+    return number.toString().repeat(repeatCount);
+  });
+  return result.join(", ");
 };
 
 console.log(repeatNumbers([[1, 10]])); // 1111111111

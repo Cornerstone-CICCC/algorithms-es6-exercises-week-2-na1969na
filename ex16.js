@@ -17,6 +17,46 @@ For more information on casing styles, read Wikipedia's Special Case Styles for 
 
 const makeCaze = function (input, caze) {
   // Put your solution here
+  let cazeArr = [];
+  if (typeof caze === "string") {
+    cazeArr.push(caze);
+  } else {
+    cazeArr = caze;
+  }
+  let newStr = input;
+  for (let c of cazeArr) {
+    switch (c) {
+      case "camel":
+        newStr = newStr.replace(/\s\w/g, (match) => match[1].toUpperCase());
+        break;
+      case "pascal":
+        newStr = newStr.replace(/\b\w/g, (match) => match.toUpperCase());
+        break;
+      case "snake":
+        newStr = newStr.replace(/\s/g, "_");
+        break;
+      case "kebab":
+        newStr = newStr.replace(/\s/g, "-");
+        break;
+      case "title":
+        newStr = newStr.replace(/\b\w/g, (match) => match.toUpperCase());
+        newStr = newStr.replace(/\s\w/g, (match) => match.toUpperCase());
+        break;
+      case "vowel":
+        newStr = newStr.replace(/[aeiou]/g, (match) => match.toUpperCase());
+        break;
+      case "consonant":
+        newStr = newStr.replace(/[^aeiou]/g, (match) => match.toUpperCase());
+        break;
+      case "upper":
+        newStr = newStr.toUpperCase();
+        break;
+      case "lower":
+        newStr = newStr.toLowerCase();
+        break;
+    }
+  }
+  return newStr;
 };
 
 console.log(makeCaze("this is a string", "camel")); // thisIsAString
